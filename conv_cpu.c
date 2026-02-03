@@ -3,9 +3,8 @@
 #include <stdint.h>
 #include <string.h>
 
-/* ============================================================
-   CPU CONVOLUTION FUNCTION (UNCHANGED)
-   ============================================================ */
+//CPU CONVOLUTION FUNCTION (UNCHANGED)
+   
 
 void cpu_convolution(
     const uint32_t* image,
@@ -41,9 +40,8 @@ void cpu_convolution(
     }
 }
 
-/* ============================================================
-   SIMPLE PGM IMAGE I/O
-   ============================================================ */
+//SIMPLE PGM IMAGE I/O
+   
 
 uint32_t* read_pgm(const char* filename, int* width, int* height) {
     FILE* f = fopen(filename, "rb");
@@ -94,9 +92,8 @@ void write_pgm(const char* filename, const uint32_t* image, int width, int heigh
     fclose(f);
 }
 
-/* ============================================================
-   MAIN DRIVER
-   ============================================================ */
+//MAIN DRIVER
+   
 
 int main(int argc, char** argv) {
     if (argc < 3) {
@@ -110,7 +107,7 @@ int main(int argc, char** argv) {
 
     uint32_t* output = (uint32_t*)malloc(width * height * sizeof(uint32_t));
 
-    /* Example filter: Sobel X */
+    //Example filter: Sobel X 
     float kernel[9] = {
         -1, 0, 1,
         -2, 0, 2,
