@@ -13,7 +13,7 @@
         } \
     } while (0)
 
-/* ================= CUDA KERNEL ================= */
+//CUDA KERNEL 
 
 __global__ void conv_kernel(
     const uint8_t* image,
@@ -47,7 +47,7 @@ __global__ void conv_kernel(
     output[y * width + x] = (uint8_t)sum;
 }
 
-/* ================= PGM I/O ================= */
+//PGM I/O 
 
 uint8_t* read_pgm(const char* filename, int* w, int* h) {
     FILE* f = fopen(filename, "rb");
@@ -81,7 +81,7 @@ void write_pgm(const char* filename, uint8_t* data, int w, int h) {
     fclose(f);
 }
 
-/* ================= MAIN ================= */
+//MAIN 
 
 int main(int argc, char** argv) {
     if (argc != 3) {
