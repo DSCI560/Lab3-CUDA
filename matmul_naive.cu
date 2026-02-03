@@ -17,18 +17,18 @@ __global__ void matrixMultiplyGPU(float *A, float *B, float *C, int N) {
 void runMatrixMultiply(int N) {
     size_t bytes = N * N * sizeof(float);
 
-    // Host memory
+    //Host memory
     float *h_A = (float*)malloc(bytes);
     float *h_B = (float*)malloc(bytes);
     float *h_C = (float*)malloc(bytes);
 
-    // Initialize matrices
+    //Initialize matrices
     for (int i = 0; i < N * N; i++) {
         h_A[i] = 1.0f;
         h_B[i] = 1.0f;
     }
 
-    // Device memory
+    //Device memory
     float *d_A, *d_B, *d_C;
     cudaMalloc(&d_A, bytes);
     cudaMalloc(&d_B, bytes);
@@ -41,7 +41,7 @@ void runMatrixMultiply(int N) {
     dim3 grid((N + block.x - 1) / block.x,
               (N + block.y - 1) / block.y);
 
-    // Timing
+    //Timing
     cudaEvent_t start, stop;
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
@@ -57,7 +57,7 @@ void runMatrixMultiply(int N) {
 
     printf("N = %d, GPU time = %.3f ms\n", N, milliseconds);
 
-    // Cleanup
+    //Cleanup
     cudaEventDestroy(start);
     cudaEventDestroy(stop);
     cudaFree(d_A);
