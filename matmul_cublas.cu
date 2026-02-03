@@ -94,7 +94,6 @@ int main(int argc, char* argv[]) {
     auto t0 = std::chrono::high_resolution_clock::now();
 
     // For row-major matrices A,B,C (stored in C order), compute C = A * B
-    // Use the trick: C^T = B^T * A^T, so pass transposes and swap A/B
     CHECK_CUBLAS(
         cublasSgemm(
             handle,
